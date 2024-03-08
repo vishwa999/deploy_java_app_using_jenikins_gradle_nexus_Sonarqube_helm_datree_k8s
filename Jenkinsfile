@@ -18,9 +18,8 @@ pipeline{
                      withSonarQubeEnv(credentialsId: 'sonarJenkins') {
                       //sh 'chmod +x gradlew'
                       //sh './gradlew sonarqube'
-                       { 
-                          sh "mvn sonar:sonar"
-                        }
+                        sh "mvn sonar:sonar"
+                    
                         timeout(time: 1, unit: 'HOURS') {
                            def qg = waitForQualityGate()
                           if (qg.status != 'OK') {
