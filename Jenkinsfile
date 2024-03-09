@@ -1,5 +1,6 @@
 pipeline{
     agent any 
+
     environment{
         VERSION = "${env.BUILD_ID}"
     }
@@ -12,7 +13,7 @@ pipeline{
             }
             steps{
                 script{
-                    withSonarQubeEnv(credentialsId: 'sonar-token') {
+                    withSonarQubeEnv(credentialsId: 'sonarJenkins') {
                             sh 'chmod +x gradlew'
                             sh './gradlew sonarqube'
                     }
